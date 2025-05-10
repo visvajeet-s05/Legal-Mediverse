@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2c3e50, #bdc3c7); /* Muted gradient */
+            color: #ddd; /* Light text */
+        }
+
+        header {
+            background-color: rgba(44, 62, 80, 0.9); /* Dark muted color */
+            padding: 20px;
+            text-align: center;
+            color: #f0f0f0; /* Softer text for header */
+        }
+
+        nav {
+            background-color: rgba(52, 73, 94, 0.8); /* Slightly lighter muted color */
+            color: #ddd;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #ddd; /* Light text */
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #bdc3c7; /* Subtle hover effect */
+        }
+
+        .section-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap; /* Allows multiple rows */
+        }
+
+        .section {
+            flex: 0 1 calc(30% - 40px); /* Adjust width to fit 3 boxes in a row */
+            background-color: rgba(52, 73, 94, 0.7); /* Muted background */
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px; /* Reduced padding */
+            color: #ddd;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            transition: transform 0.3s ease;
+            margin-bottom: 20px; /* Space between rows */
+        }
+
+        .section:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .section h2 {
+            color: #ffffff; /* Make section titles brighter */
+            font-size: 1.6rem; /* Decrease font size */
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 1.1rem; /* Slightly smaller text */
+            color: #d0d0d0; /* Softer text for readability */
+            margin-bottom: 15px;
+        }
+
+        .try-now-button {
+            background-color: #7f8c8d; /* Muted button color */
+            border: none;
+            color: white;
+            padding: 10px 20px; /* Reduce button size */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px; /* Smaller font size */
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .try-now-button:hover {
+            background-color: #95a5a6; /* Slightly brighter hover */
+        }
+
+        /* Ensure the images fit properly */
+        .section img {
+            width: 150px; /* Smaller image size */
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        /* Media query to ensure responsiveness on smaller screens */
+        @media (max-width: 768px) {
+            .section {
+                flex: 0 1 100%; /* Stacks sections on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to online courses</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a> 
+    <a href="/Login">Signup/login</a>
+    <a href="/courses">Courses</a>
+    <a href="/road">Roadmap Generator</a>
+    <a href="/study">Study Planner</a>
+    <a href="/chatbot">EduChat</a>
+    <a href="/tutor">Online-Tutor</a>
+    <a href="/note">Notes Summarizer</a>
+</nav>
+
+<div class="section-container">
+    <div class="section" id="courses">
+        <h2>Python</h2>
+        <div>
+            <img src="{{ url_for('static', filename='python.png') }}" alt="Courses">
+            <p>Python for Beginners.</p>
+            <a href="/pay"><button class="try-now-button">PAY NOW</button></a>
+        </div>
+    </div>
+
+    <div class="section" id="courses">
+        <h2>SQL</h2>
+        <div>
+            <img src="{{ url_for('static', filename='sql.png') }}" alt="Courses">
+            <p>SQL for Beginners.</p>
+            <a href="/pay"><button class="try-now-button">PAY NOW</button></a>
+        </div>
+    </div>
+
+    <div class="section" id="courses">
+        <h2>HTML</h2>
+        <div>
+            <img src="{{ url_for('static', filename='html.jpeg') }}" alt="Courses">
+            <p>HTML for Beginners.</p>
+            <a href="/pay"><button class="try-now-button">PAY NOW</button></a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalMediverse</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #2c3e50, #bdc3c7); /* Muted gradient */
+    color: #ddd; /* Light text */
+}
+
+header {
+    background-color: rgba(44, 62, 80, 0.9); /* Dark muted color */
+    padding: 20px;
+    text-align: center;
+    color: #f0f0f0; /* Softer text for header */
+}
+
+nav {
+    background-color: rgba(52, 73, 94, 0.8); /* Slightly lighter muted color */
+    color: #ddd;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #ddd; /* Light text */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #bdc3c7; /* Subtle hover effect */
+}
+
+.section-container {
+    display: flex;
+    justify-content: center; /* Centers the content */
+    gap: 20px; /* Space between the boxes */
+    padding: 20px;
+    flex-wrap: nowrap; /* Prevents wrapping */
+}
+
+.section {
+    flex: 0 1 45%; /* Both sections will take up 45% of the container's width */
+    background-color: rgba(52, 73, 94, 0.7); /* Muted background */
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px;
+    color: #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease;
+}
+
+.section:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.section h2 {
+    color: #ffffff; /* Make section titles brighter */
+    font-size: 1.8rem; /* Increase font size */
+    margin-bottom: 15px;
+}
+
+.section p {
+    font-size: 1.2rem; /* Make the text bigger */
+    color: #d0d0d0; /* Softer text for readability */
+    margin-bottom: 15px;
+}
+
+.try-now-button {
+    background-color: #7f8c8d; /* Muted button color */
+    border: none;
+    color: white;
+    padding: 12px 25px; /* Increase button size */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.try-now-button:hover {
+    background-color: #95a5a6; /* Slightly brighter hover */
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Legal Mediverse</h1>
+</header>
+
+<nav>
+    <a href="/">HealthMate</a> 
+    <a href="/login">EduMate</a>    
+</nav>
+
+<div class="section-container">
+    <div class="section" id="healthmate">
+        <h2>HealthMate</h2>
+        <div>
+            <p>Your ultimate health companion. Stay fit, track your health, and get expert advice.</p>
+            <a href="/index1"><button class="try-now-button">TRY NOW</button></a>
+        </div>
+    </div>
+
+    <div class="section" id="edumate">
+        <h2>EduMate</h2>
+        <div>
+            <p>Your personalized learning platform. Explore courses, gain knowledge, and excel in your studies.</p>
+            <a href="/edu"><button class="try-now-button">TRY NOW</button></a>
+        </div>
+    </div>
+
+    <!--<div class="section" id="lawmate">
+        <h2>LawMate</h2>
+        <div>
+            <p>Your legal companion. Access legal resources, get advice, and protect your rights.</p>
+            <a href="/law"><button class="try-now-button">TRY NOW</button></a>
+        </div>
+    </div>-->
+</div>
+
+</body>
+</html>
