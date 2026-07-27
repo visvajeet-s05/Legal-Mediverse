@@ -2,8 +2,6 @@
 
 > Enterprise-grade multi-agent platform for health, education, community crowdfunding, and legal services.
 
-## Short description of this repository
-
 Legal Mediverse is a full-stack Web3 platform combining AI-powered medical bill verification, Polygon-based crowdfunding escrow smart contracts, education tools, and legal services. It enables transparent medical fundraising, automated bill OCR verification, learning resources, and legal document processing.
 
 ## Features
@@ -81,15 +79,6 @@ Polygon Amoy Testnet
 - **ORM**: SQLAlchemy 2.0 (Async)
 - **Validation**: Pydantic v2
 - **AI/ML**: Google Gemini Vision, Presidio
-
-## Prerequisites
-
-- Python 3.11 or higher
-- Node.js 18+ and npm
-- MySQL 8.0 or SQLite
-- Redis (optional, falls back to in-memory)
-- Qdrant (optional, falls back to mock)
-- Polygon RPC endpoint
 
 ## Quick Start
 
