@@ -1,0 +1,112 @@
+# ═══════════════════════════════════════════════════════════════
+# Legal Mediverse — .gitignore
+# ═══════════════════════════════════════════════════════════════
+
+# ── Environment & Secrets (NEVER commit) ──────────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.testnet.local
+.env.*.local
+
+# ── Python Artifacts ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ── Node.js / NPM ─────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Hardhat / Smart Contracts ─────────────────────────────────
+contracts/artifacts/
+contracts/cache/
+typechain-types/
+
+# ── Next.js Frontend ──────────────────────────────────────────
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+frontend/.env.local
+frontend/.env.production.local
+
+# ── Local Databases ───────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+instance/*.db
+mediverse.db
+
+# ── IDE & Editor ──────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Monitoring Data ───────────────────────────────────────────
+prometheus_data/
+grafana_data/
+alertmanager_data/
+
+# ── Deployment Artifacts ──────────────────────────────────────
+deployments/*.json
+
+# ── Generated Media ───────────────────────────────────────────
+backend/static/generated_audio/*.wav
+output.mp3
+*.mp3
+*.wav
+
+# ── Coverage & Reports ────────────────────────────────────────
+htmlcov/
+.coverage
+coverage/
+coverage.xml
+*.cover
+.hypothesis/
+slither-report.md
+slither-report.json
+results.sarif
+
+# ── Security ──────────────────────────────────────────────────
+SECURITY_NOTICE.md
+
+# ── Legacy Flask App (Archived) ───────────────────────────────
+# These directories contain the deprecated Flask application
+# which has been replaced by the FastAPI backend.
+# Uncomment if you want to archive them entirely:
+# blueprints/
+# static/
+# templates/
+# services/
+# models/
+
+# ── macOS / Windows ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ──────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+
+# ── Temporary Files ───────────────────────────────────────────
+tmp/
+temp/
+*.tmp

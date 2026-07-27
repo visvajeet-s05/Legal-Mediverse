@@ -1,0 +1,91 @@
+name: Legal Mediverse CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+permissions:
+  contents: read
+
+jobs:
+  backend-test:
+    name: Backend tests and dependency audit
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: test
+      DATABASE_URL: sqlite+aiosqlite:///./ci_test.db
+      GEMINI_API_KEY: ""
+      OPENAI_API_KEY: ""
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest-cov pip-audit reportlab
+      - name: Run backend tests with coverage
+        run: python -m pytest -v --cov=backend.app --cov-report=term-missing --cov-report=xml backend/tests/
+      - name: Audit Python dependencies
+        run: python -m pip_audit
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: coverage.xml
+          if-no-files-found: error
+
+  frontend-build:
+    name: Frontend typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend dependencies
+        run: npm ci --prefix frontend
+      - name: Verify TypeScript
+        run: npx --prefix frontend tsc --noEmit --project frontend/tsconfig.json
+      - name: Build Next.js application
+        run: npm run build --prefix frontend
+
+  contract-test:
+    name: Smart contract compile and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install contract dependencies
+        run: npm ci
+      - name: Compile Solidity contracts
+        run: npx hardhat compile
+      - name: Run Hardhat tests
+        run: npx hardhat test
+      - name: Run Slither static analysis
+        uses: crytic/slither-action@v0.4.0
+        with:
+          target: .
+          fail-on: medium
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Scan for committed secrets
+        uses: gitleaks/gitleaks-action@v2

@@ -1,0 +1,158 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        { "internalType": "address", "name": "_oracle", "type": "address" },
+        { "internalType": "bytes32", "name": "_jobId", "type": "bytes32" },
+        { "internalType": "uint256", "name": "_fee", "type": "uint256" }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+        { "indexed": false, "internalType": "bool", "name": "isVerified", "type": "bool" },
+        { "indexed": false, "internalType": "uint256", "name": "billTotal", "type": "uint256" },
+        { "indexed": false, "internalType": "uint256", "name": "fraudRiskScore", "type": "uint256" }
+      ],
+      "name": "BillVerificationFulfilled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+        { "indexed": true, "internalType": "bytes32", "name": "requestId", "type": "bytes32" }
+      ],
+      "name": "BillVerificationRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+        { "indexed": false, "internalType": "address", "name": "creator", "type": "address" },
+        { "indexed": false, "internalType": "address", "name": "hospital", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "targetAmount", "type": "uint256" }
+      ],
+      "name": "CampaignCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "address" },
+        { "indexed": true, "internalType": "address", "name": "donor", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
+      ],
+      "name": "Donated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+        { "indexed": false, "internalType": "address", "name": "hospital", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
+      ],
+      "name": "FundsReleased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+        { "indexed": true, "internalType": "address", "name": "donor", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
+      ],
+      "name": "RefundIssued",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "campaignCount",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "", "type": "uint256" }
+      ],
+      "name": "campaigns",
+      "outputs": [
+        { "internalType": "address payable", "name": "creator", "type": "address" },
+        { "internalType": "address payable", "name": "hospitalWallet", "type": "address" },
+        { "internalType": "uint256", "name": "targetAmount", "type": "uint256" },
+        { "internalType": "uint256", "name": "amountRaised", "type": "uint256" },
+        { "internalType": "bool", "name": "isVerified", "type": "bool" },
+        { "internalType": "bool", "name": "isReleased", "type": "bool" },
+        { "internalType": "uint256", "name": "billTotalExtracted", "type": "uint256" },
+        { "internalType": "uint256", "name": "fraudRiskScore", "type": "uint256" }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address payable", "name": "_hospitalWallet", "type": "address" },
+        { "internalType": "uint256", "name": "_targetAmount", "type": "uint256" }
+      ],
+      "name": "createCampaign",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_campaignId", "type": "uint256" }
+      ],
+      "name": "donate",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_campaignId", "type": "uint256" },
+        { "internalType": "bool", "name": "_isVerified", "type": "bool" },
+        { "internalType": "uint256", "name": "_billTotalExtracted", "type": "uint256" },
+        { "internalType": "uint256", "name": "_fraudRiskScore", "type": "uint256" }
+      ],
+      "name": "fulfillBillVerification",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_campaignId", "type": "uint256" }
+      ],
+      "name": "releaseFunds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_campaignId", "type": "uint256" },
+        { "internalType": "string", "name": "_billUrl", "type": "string" }
+      ],
+      "name": "requestBillVerification",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_campaignId", "type": "uint256" }
+      ],
+      "name": "claimRefund",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "detectors_to_run": "all",
+  "exclude_low": false,
+  "exclude_informational": false,
+  "exclude_dependencies": true,
+  "filter_paths": "(node_modules|contracts/mocks|contracts/test)",
+  "solc_args": "--optimize --optimize-runs 200",
+  "compile_force_framework": "hardhat",
+  "json": "slither-report.json",
+  "markdown": "slither-report.md"
+}
+
