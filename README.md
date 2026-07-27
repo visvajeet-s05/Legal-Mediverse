@@ -6,23 +6,6 @@
 
 Legal Mediverse is a full-stack Web3 platform combining AI-powered medical bill verification, Polygon-based crowdfunding escrow smart contracts, education tools, and legal services. It enables transparent medical fundraising, automated bill OCR verification, learning resources, and legal document processing.
 
-## Table of Contents
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-- [Environment Setup](#environment-setup)
-- [Running Backend](#running-backend)
-- [Running Frontend](#running-frontend)
-- [Testing](#testing)
-- [API Reference](#api-reference)
-- [Deployment](#deployment)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Features
 
 ### Community & Crowdfunding
@@ -98,18 +81,6 @@ Polygon Amoy Testnet
 - **ORM**: SQLAlchemy 2.0 (Async)
 - **Validation**: Pydantic v2
 - **AI/ML**: Google Gemini Vision, Presidio
-
-### Infrastructure
-- **Database**: MySQL 8.0 / SQLite
-- **Cache**: Redis
-- **Vector DB**: Qdrant
-- **Monitoring**: Prometheus, Grafana
-- **Containerization**: Docker, Docker Compose
-
-### Blockchain
-- **Network**: Polygon Amoy Testnet
-- **Smart Contracts**: Solidity 0.8.20
-- **Development**: Hardhat
 
 ## Prerequisites
 
@@ -226,105 +197,6 @@ npm run build
 npm start
 ```
 
-## Testing
-
-### Backend Tests
-
-```bash
-cd backend
-
-# Run all tests
-.venv\Scripts\pytest -v backend/tests/
-
-# Run specific test file
-.venv\Scripts\pytest -v backend/tests/test_api.py
-
-# Run with coverage
-.venv\Scripts\pytest --cov=backend backend/tests/
-```
-
-### Smart Contract Tests
-
-```bash
-cd contracts
-
-npm install
-npx hardhat test
-```
-
-### E2E Integration Tests
-
-```bash
-cd scripts
-python test_e2e_integration.py
-```
-
-## API Reference
-
-### Community Endpoints
-
-- `GET /api/v1/community/campaigns` - List all campaigns
-- `POST /api/v1/community/campaigns` - Create campaign
-- `GET /api/v1/community/campaigns/{id}` - Get campaign details
-- `POST /api/v1/community/campaigns/{id}/donate` - Donate to campaign
-- `POST /api/v1/community/campaigns/{id}/verify-bill` - Verify hospital bill
-- `POST /api/v1/community/campaigns/{id}/release-milestone` - Release funds
-- `POST /api/v1/community/campaigns/{id}/claim-refund` - Claim refund
-
-### Health Endpoints
-
-- `POST /api/v1/health/records` - Create health record
-- `GET /api/v1/health/records` - List user health records
-- `GET /api/v1/health/records/{id}` - Get record details
-
-### Education Endpoints
-
-- `POST /api/v1/edu/notes` - Create educational note
-- `GET /api/v1/edu/notes` - List user notes
-- `POST /api/v1/edu/notes/{id}/flashcards` - Generate flashcards
-
-### Legal Endpoints
-
-- `POST /api/v1/law/cases` - Create legal case
-- `POST /api/v1/law/cases/{id}/analyze` - Analyze document
-- `POST /api/v1/law/appeal` - Generate appeal letter
-
-### Authentication
-
-- `POST /api/v1/auth/register` - Register user
-- `POST /api/v1/auth/login` - Login user
-- `GET /api/v1/auth/me` - Get current user
-
-## Deployment
-
-### Docker Deployment
-
-```bash
-# Build images
-docker-compose build
-
-# Start all services
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop services
-docker-compose down
-```
-
-### Production Configuration
-
-1. Set `APP_ENV=production` or `APP_ENV=testnet`
-2. Configure production database
-3. Set up Redis and Qdrant
-4. Configure object storage (S3 or local)
-5. Set up monitoring (Prometheus, Grafana)
-6. Configure Sentry for error tracking
-7. Set strong `JWT_SECRET_KEY`
-8. Configure CORS origins
-9. Set up SSL/TLS certificates
-
 ## Project Structure
 
 ```
@@ -350,52 +222,6 @@ docker-compose down
 ├── monitoring/              # Prometheus, Grafana configs
 └── scripts/                 # Deployment and utility scripts
 ```
-
-## Development Guidelines
-
-### Code Style
-
-- **Backend (Python)**:
-  - PEP 8 compliance
-  - Type hints on all functions and classes
-  - Pydantic v2 models for validation
-  - Async-first approach (`async def` and `await`)
-
-- **Frontend (TypeScript)**:
-  - Strict TypeScript mode
-  - Functional components with hooks
-  - Tailwind CSS utility classes
-  - Explicit interfaces, avoid `any`
-
-- **Smart Contracts (Solidity)**:
-  - Solidity 0.8.20
-  - OpenZeppelin standards
-  - Comprehensive NatSpec comments
-
-### Git Workflow
-
-1. Create feature branch from `main`
-2. Implement changes with clear commit messages
-3. Ensure tests pass
-4. Submit pull request
-
-## Security
-
-- PII redaction with Microsoft Presidio
-- JWT-based authentication
-- Role-based access control
-- Immutable audit logging
-- Rate limiting middleware
-- Secret scanning in CI/CD
-- SQL injection prevention via ORM
-
-## Monitoring
-
-- **Metrics**: Prometheus endpoint at `/metrics`
-- **Logging**: Structured JSON logging
-- **Error Tracking**: Sentry integration
-- **Health Check**: `/api/health`
-- **WebSocket**: Real-time event broadcasting
 
 ## Contributing
 
